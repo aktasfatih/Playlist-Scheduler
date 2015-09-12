@@ -16,5 +16,9 @@ The file named 'Playlist-Scheduler.jar' is an executable jar, which means you ca
 7. Click 'Set'
 8. The time is now set. The program will start playing the music when the time comes.
 
+
+##Notes
+- Program only supports mp3 files for now. That may be changed if needed in the future.
+
 Thank you,
 Fatih AKTAS
