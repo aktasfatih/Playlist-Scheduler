@@ -4,7 +4,7 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 import java.text.DateFormat;
 
-
+//This is an unused class that was only for trying stuff
 public class GetDayName {
 
     public static void main(String[] args) {
