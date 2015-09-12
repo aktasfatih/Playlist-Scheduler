@@ -318,25 +318,25 @@ public class Main extends JPanel {
 		setButton.setLocation(165, 330);
 		
 		Monday.setLocation(165, 100);
-		Monday_t.setLocation(185, 102);
+		Monday_t.setLocation(190, 103);
 		
 		Tuesday.setLocation(165, 120);
-		Tuesday_t.setLocation(185, 122);
+		Tuesday_t.setLocation(190, 123);
 		
 		Wednesday.setLocation(165, 140);
-		Wednesday_t.setLocation(185, 142);
+		Wednesday_t.setLocation(190, 143);
 		
 		Thursday.setLocation(165, 160);
-		Thursday_t.setLocation(185, 162);
+		Thursday_t.setLocation(190, 163);
 		
 		Friday.setLocation(165, 180);
-		Friday_t.setLocation(185, 182);
+		Friday_t.setLocation(190, 183);
 		
 		Saturday.setLocation(165, 200);
-		Saturday_t.setLocation(185, 202);
+		Saturday_t.setLocation(190, 203);
 		
 		Sunday.setLocation(165, 220);
-		Sunday_t.setLocation(185, 222);
+		Sunday_t.setLocation(190, 223);
 		
 		Settings.setLocation(200, 85);
 		startTime.setLocation(165, 235);
