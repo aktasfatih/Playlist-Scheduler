@@ -5,6 +5,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.DefaultCaret;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -40,7 +41,7 @@ public class Main extends JPanel {
 	static String logger = "";
 	
 	final int WIDTH = 310;
-	final int HEIGHT = 400;
+	final int HEIGHT = 480;
 	
 	//COMPONENTS
 	public JFrame frame;
@@ -82,13 +83,16 @@ public class Main extends JPanel {
 	
 	JTextField startH = new JTextField();
 	JTextField stopH = new JTextField();
+	
+	static JEditorPane logArea = new JEditorPane();
+	static JScrollPane scroll = new JScrollPane();
 
 	AudioInputStream audioInputStream;
 	Clip clip;
 	MyAudioPlayer thePlayer = null;
 
 	public Main(){
-		log("Object created");
+		log("Program Started");
 		initComponents();
 		initListeners();
 		initListChecker();
@@ -116,12 +120,13 @@ public class Main extends JPanel {
 		    	SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
 		    	String todaysName = (String)sayDayName(date);
 		    	String todaysHour = (String)dateFormat.format(c.getTime());
-		    	log(todaysHour+" "+todaysName);
-		    	log("List has "+musicList.size()+" items");
+		    	//log(todaysHour+" "+todaysName);
+		    	//log("List has <font style='color:red'>"+musicList.size()+"</font> items");
 		      if(Musics.getModel().getSize() > 0){
+		    	  log("Checking the list");
 		    	  for(int i = 0; i < musicList.size(); i++){
 		    		  Music selectedM = musicList.get(i);
-		    		  log("Checking "+selectedM.getFile().getName());
+		    		  //log("Checking "+selectedM.getFile().getName());
 		    		  switch(todaysName){
 		    			  case "Monday":
 		    				  if(selectedM.MondayS.equals(todaysHour)){
@@ -177,6 +182,8 @@ public class Main extends JPanel {
 		    					  break;
 		    		  }
 		    	  }
+		      }else{
+		    	  log("<font style='color:blue'>Nothing to check. Please add music</font>");
 		      }
 		      //***********
 		      try {
@@ -203,6 +210,8 @@ public class Main extends JPanel {
 		
 		//COMPONENT SETTING
 		fc.setFileFilter(filter);
+		scroll.setViewportView(logArea);
+		logArea.setContentType("text/html");
 		//SETS
 		removeMusic.setEnabled(false);
 		setButton.setEnabled(false);
@@ -268,11 +277,13 @@ public class Main extends JPanel {
 		Sunday_t.setSize(100, 15);
 		
 		Settings.setSize(100, 15);
-		startTime.setSize(15,40);
-		stopTime.setSize(15,40);
+		startTime.setSize(30,40);
+		stopTime.setSize(30,40);
 		
 		startH.setSize(40,20);
 		stopH.setSize(40, 20);
+		
+		logArea.setSize(290, 80);
 
 		//Positions
 		add(Musics);
@@ -288,6 +299,7 @@ public class Main extends JPanel {
 		add(Sunday);
 		add(playButton);
 		add(stopButton);
+		add(logArea);
 		
 	    group.add(Monday);
 	    group.add(Tuesday);
@@ -347,19 +359,21 @@ public class Main extends JPanel {
 		
 		playButton.setLocation(175, 290);
 		stopButton.setLocation(235, 290);
+		
+		logArea.setLocation(10,370);
 
 	}
 	
 	public void initListeners(){
 		addMusic.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				log("Add Music is clicked");
+				
 				int returnVal = fc.showOpenDialog(null);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					musicList.add(new Music(fc.getSelectedFile()));
 				    list.addElement(fc.getSelectedFile().getName());
 				    File f = musicList.get(musicList.size()-1).getFile();
-				    log("'"+f.getPath()+"' is added.");
+				    log("<font style='color:green'>'"+f.getName()+"'</font> is added.");
 				}
 			}
 		});
@@ -376,7 +390,6 @@ public class Main extends JPanel {
 		Musics.addListSelectionListener(new ListSelectionListener(){
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				log(Musics.getSelectedIndex()+".Item is chosen");
 				if (e.getValueIsAdjusting() == false) {
 			        if (Musics.getSelectedIndex() == -1) {
 			            removeMusic.setEnabled(false);
@@ -478,6 +491,7 @@ public class Main extends JPanel {
 		Monday.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				log("Monday is clicked");
+				log("Set a time now[Ex:12:00]");
 				int index = Musics.getSelectedIndex();
 				
 				startH.setText(musicList.get(index).MondayS);
@@ -494,6 +508,7 @@ public class Main extends JPanel {
 		Tuesday.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				log("Tuesday is clicked");
+				log("Set a time now[Ex:12:00]");
 				int index = Musics.getSelectedIndex();
 				
 				startH.setText(musicList.get(index).TuesdayS);
@@ -510,6 +525,7 @@ public class Main extends JPanel {
 		Wednesday.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				log("Wednesday is clicked");
+				log("Set a time now[Ex:12:00]");
 				int index = Musics.getSelectedIndex();
 				
 				startH.setText(musicList.get(index).WednesdayS);
@@ -526,6 +542,7 @@ public class Main extends JPanel {
 		Thursday.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				log("Thursday is clicked");
+				log("Set a time now[Ex:12:00]");
 				int index = Musics.getSelectedIndex();
 				
 				startH.setText(musicList.get(index).ThursdayS);
@@ -542,6 +559,7 @@ public class Main extends JPanel {
 		Friday.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				log("Friday is clicked");
+				log("Set a time now[Ex:12:00]");
 				int index = Musics.getSelectedIndex();
 				
 				startH.setText(musicList.get(index).FridayS);
@@ -558,6 +576,7 @@ public class Main extends JPanel {
 		Saturday.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				log("Saturday is clicked");
+				log("Set a time now[Ex:12:00]");
 				int index = Musics.getSelectedIndex();
 				
 				startH.setText(musicList.get(index).SaturdayS);
@@ -574,6 +593,7 @@ public class Main extends JPanel {
 		Sunday.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
 				log("Sunday is clicked");
+				log("Set a time now[Ex:12:00]");
 				int index = Musics.getSelectedIndex();
 				
 				startH.setText(musicList.get(index).SundayS);
@@ -599,14 +619,15 @@ public class Main extends JPanel {
 					thePlayer.close();
 				thePlayer = new MyAudioPlayer(musicPath, true);
 		        thePlayer.start();
-				log("Music is playing now.");
+				log("<font style='color:red'>"+musicList.get(index).getFile().getName()+"</font> is playing now.");
 				thePlayer.Playing = index;
 			}catch(Exception ex)
-			{log("Error when playing:"+musicPath+"\nError:"+ex.getMessage());}
+			{log("Error:"+musicPath+"\nError:"+ex.getMessage());}
 		}
 	}
 	
 	public void pauseSong(){
+		log("<font style='color:red'>Music is stopped.</font>");
 		musicList.get(thePlayer.Playing).isPlaying = false;
 		thePlayer.Playing = -1;
 		thePlayer.close();
@@ -619,8 +640,12 @@ public class Main extends JPanel {
 	}
 	
 	public static void log(String s){
+    	Calendar c = Calendar.getInstance();
+    	SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
+    	String logHour = (String)dateFormat.format(c.getTime());
 		logger += s+"\n";
 		System.out.print(s+"\n");
+		logArea.setText("["+logHour+"] "+s+logArea.getText()+"<br>");
 	}
 	
 	

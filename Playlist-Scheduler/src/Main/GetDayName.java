@@ -2,6 +2,7 @@ package Main;
 
 import java.util.*;
 import java.text.SimpleDateFormat;
+import java.awt.Color;
 import java.text.DateFormat;
 
 //This is an unused class that was only for trying stuff
@@ -15,6 +16,7 @@ public class GetDayName {
       System.out.println
         ("1989-10-17 was a " + sayDayName(date1));
       System.out.println("Today is a " + sayDayName(date2));
+      System.out.println(Color.black.toString());
     }
 
     public static String sayDayName(Date d) {
