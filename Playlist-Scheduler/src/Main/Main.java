@@ -280,8 +280,8 @@ public class Main extends JPanel {
 		startTime.setSize(30,40);
 		stopTime.setSize(30,40);
 		
-		startH.setSize(40,20);
-		stopH.setSize(40, 20);
+		startH.setSize(100,18);
+		stopH.setSize(100, 18);
 		
 		logArea.setSize(290, 80);
 
