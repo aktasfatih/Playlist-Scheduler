@@ -54,6 +54,8 @@ public class Main extends JPanel {
 	
 	DefaultListModel list = new DefaultListModel();
 	JList Musics = new JList(list);
+	JScrollPane musicScrollPane = new JScrollPane(Musics);
+
 	
 	JFileChooser fc = new JFileChooser();
 	FileFilter filter = new FileNameExtensionFilter("MP3 File","mp3");
@@ -85,7 +87,7 @@ public class Main extends JPanel {
 	JTextField stopH = new JTextField();
 	
 	static JEditorPane logArea = new JEditorPane();
-	static JScrollPane scroll = new JScrollPane();
+	static JScrollPane scroll = new JScrollPane(logArea);
 
 	AudioInputStream audioInputStream;
 	Clip clip;
@@ -208,10 +210,12 @@ public class Main extends JPanel {
 		this.setLayout(null);
 		this.frame.setResizable(false);
 		
+
 		//COMPONENT SETTING
 		fc.setFileFilter(filter);
-		scroll.setViewportView(logArea);
 		logArea.setContentType("text/html");
+		
+		
 		//SETS
 		removeMusic.setEnabled(false);
 		setButton.setEnabled(false);
@@ -251,7 +255,7 @@ public class Main extends JPanel {
 		
 		
 		//Sizes
-		Musics.setSize(new Dimension(150,350));
+		musicScrollPane.setSize(new Dimension(150,350));
 		Musics.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		Musics.setLayoutOrientation(JList.VERTICAL);
 		
@@ -283,10 +287,10 @@ public class Main extends JPanel {
 		startH.setSize(100,18);
 		stopH.setSize(100, 18);
 		
-		logArea.setSize(290, 80);
+		scroll.setSize(290, 80);
 
 		//Positions
-		add(Musics);
+		add(musicScrollPane);
 		add(addMusic);
 		add(removeMusic);
 		add(setButton);
@@ -299,7 +303,7 @@ public class Main extends JPanel {
 		add(Sunday);
 		add(playButton);
 		add(stopButton);
-		add(logArea);
+		add(scroll);
 		
 	    group.add(Monday);
 	    group.add(Tuesday);
@@ -323,7 +327,7 @@ public class Main extends JPanel {
 		add(startH);
 		add(stopH);
 		
-		Musics.setLocation(10, 10);
+		musicScrollPane.setLocation(10, 10);
 		
 		addMusic.setLocation(165, 10);
 		removeMusic.setLocation(165, 45);
@@ -360,7 +364,7 @@ public class Main extends JPanel {
 		playButton.setLocation(175, 290);
 		stopButton.setLocation(235, 290);
 		
-		logArea.setLocation(10,370);
+		scroll.setLocation(10,370);
 
 	}
 	
@@ -646,6 +650,7 @@ public class Main extends JPanel {
 		logger += s+"\n";
 		System.out.print(s+"\n");
 		logArea.setText("["+logHour+"] "+s+logArea.getText()+"<br>");
+		scroll.getVerticalScrollBar().setValue(0);
 	}
 	
 	
