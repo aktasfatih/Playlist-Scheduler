@@ -453,37 +453,37 @@ public class Main extends JPanel {
 					if(Monday.isSelected()){
 						musicList.get(index).MondayS = startD;
 						musicList.get(index).MondayP = stopD;
-						Monday.setText("Monday+");
+						Monday_t.setText("Monday+");
 						log("Monday is Set");
 					}else if(Tuesday.isSelected()){
 						musicList.get(index).TuesdayS = startD;
 						musicList.get(index).TuesdayP = stopD;
-						Tuesday.setText("Tuesday+");
+						Tuesday_t.setText("Tuesday+");
 						log("Tuesday is Set");
 					}else if(Wednesday.isSelected()){
 						musicList.get(index).WednesdayS = startD;
 						musicList.get(index).WednesdayP = stopD;
-						Wednesday.setText("Monday+");
+						Wednesday_t.setText("Monday+");
 						log("Wednesday is Set");
 					}else if(Thursday.isSelected()){
 						musicList.get(index).ThursdayS = startD;
 						musicList.get(index).ThursdayP = stopD;
-						Thursday.setText("Thursday+");
+						Thursday_t.setText("Thursday+");
 						log("Thursday is Set");
 					}else if(Friday.isSelected()){
 						musicList.get(index).FridayS = startD;
 						musicList.get(index).FridayP = stopD;
-						Friday.setText("Friday+");
+						Friday_t.setText("Friday+");
 						log("Friday is Set");
 					}else if(Saturday.isSelected()){
 						musicList.get(index).SaturdayS = startD;
 						musicList.get(index).SaturdayP = stopD;
-						Monday.setText("Saturday+");
+						Saturday_t.setText("Saturday+");
 						log("Saturday is Set");
 					}else if(Sunday.isSelected()){
 						musicList.get(index).SundayS = startD;
 						musicList.get(index).SundayP = stopD;
-						Monday.setText("Sunday+");
+						Sunday_t.setText("Sunday+");
 						log("Sunday is Set");
 					}
 				}else{
