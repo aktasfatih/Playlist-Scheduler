@@ -1,6 +1,5 @@
 package Main;
 
-import javax.swing.JFrame;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileFilter;
@@ -32,8 +31,24 @@ import javazoom.jl.player.*;
 import javax.swing.*;
 
 public class Main extends JPanel {
+	
 	public static void main(String[] args){
 		log("Program has started");
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		Main panel = new Main();
 		panel.frame.setVisible(true);
 		
@@ -649,7 +664,7 @@ public class Main extends JPanel {
     	String logHour = (String)dateFormat.format(c.getTime());
 		logger += s+"\n";
 		System.out.print(s+"\n");
-		logArea.setText("["+logHour+"] "+s+logArea.getText()+"<br>");
+		logArea.setText("["+logHour+"] " + s +logArea.getText()+"<br>");
 		scroll.getVerticalScrollBar().setValue(0);
 	}
 	
