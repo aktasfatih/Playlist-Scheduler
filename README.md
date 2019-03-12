@@ -23,7 +23,7 @@ The file named 'Playlist-Scheduler.jar' is an executable jar, which means you ca
 - To set a time more than one for a song, you have to add the file more than once then set the time.
  
 ## Pictures from the software
-<img src="https://github.com/aktasfatih/Playlist-Scheduler/blob/windowShot/Pictures/WindowShot_1.png?raw=true" style="width:100px;height:auto" alt="Screenshot of Playlist-Scheduler"/>
+<img src="https://github.com/aktasfatih/Playlist-Scheduler/blob/windowShot/Pictures/WindowShot_1.png?raw=true" width="200" alt="Screenshot of Playlist-Scheduler"/>
 
 
  Enjoy
