@@ -14,11 +14,11 @@ The file named 'Playlist-Scheduler.jar' is an executable jar, which means you ca
 5. Set it to a specific time. (For example 12:24) 
 6. Set a time for pause 'P:' textbox (For example 12:25)
 7. Click 'Set'
-8. The time is now set. The program will start playing the music when the time comes.
+8. The time is now set. The program will start playing music when the time comes.
 
 
 ## Notes
-- Program only supports mp3 files for now. That may be changed if needed in the future.
+- The program only supports mp3 files for now. That may be changed if needed in the future.
 - You have to click on the music after you add it in order to activate the menu.
 - To set a time more than one for a song, you have to add the file more than once then set the time.
 
