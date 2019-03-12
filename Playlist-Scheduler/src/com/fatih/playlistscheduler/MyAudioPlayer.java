@@ -1,4 +1,4 @@
-package Main;
+package com.fatih.playlistscheduler;
 
 import java.io.*;
 import javazoom.jl.player.*;

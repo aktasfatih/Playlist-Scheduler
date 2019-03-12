@@ -1,4 +1,4 @@
-package Main;
+package com.fatih.playlistscheduler;
 
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -30,35 +30,12 @@ import javazoom.jl.player.*;
 
 import javax.swing.*;
 
-public class Main extends JPanel {
-	
-	public static void main(String[] args){
-		log("Program has started");
-		try {
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Main panel = new Main();
-		panel.frame.setVisible(true);
-		
-	}
+public class PlaylistScheduler extends JPanel {
 	static String logger = "";
 	
-	final int WIDTH = 310;
-	final int HEIGHT = 480;
+	public static final int WIDTH = 310;
+	public static final int HEIGHT = 480;
 	
-	//COMPONENTS
 	public JFrame frame;
 	
 	JButton addMusic = new JButton();
@@ -70,7 +47,6 @@ public class Main extends JPanel {
 	DefaultListModel list = new DefaultListModel();
 	JList Musics = new JList(list);
 	JScrollPane musicScrollPane = new JScrollPane(Musics);
-
 	
 	JFileChooser fc = new JFileChooser();
 	FileFilter filter = new FileNameExtensionFilter("MP3 File","mp3");
@@ -108,13 +84,46 @@ public class Main extends JPanel {
 	Clip clip;
 	MyAudioPlayer thePlayer = null;
 
-	public Main(){
-		log("Program Started");
+	static PlaylistScheduler app;
+	
+	public static void init() {
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		app = new PlaylistScheduler();
+		app.frame.setVisible(true);
+	}
+	
+	/**
+	 * Class constructor for PlaylistScheduler
+	 */
+	public PlaylistScheduler(){
+		
+		log("Playlist-Scheduler initiated.");
 		initComponents();
 		initListeners();
 		initListChecker();
+		
+		
 	}
 	
+	/**
+	 * Returns the name of the day.
+	 * @param d
+	 * @return
+	 */
 	public static String sayDayName(Date d) {
       DateFormat f = new SimpleDateFormat("EEEE", Locale.ENGLISH);
       try {
@@ -126,6 +135,9 @@ public class Main extends JPanel {
       }
     }
 	
+	/**
+	 * Checks the list if there are any songs ready-to-play
+	 */
 	public void initListChecker(){
 		final long timeInterval = 5000;
 		  Runnable runnable = new Runnable() {
@@ -214,6 +226,9 @@ public class Main extends JPanel {
 		  thread.start();
 	}
 	
+	/**
+	 * Initiating the components with specific properties.
+	 */
 	public void initComponents(){
 		log("Components initiallized");
 		this.frame = new JFrame();
@@ -383,10 +398,13 @@ public class Main extends JPanel {
 
 	}
 	
+	
+	/**
+	 * Initiating event listeners for the buttons.
+	 */
 	public void initListeners(){
 		addMusic.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				
 				int returnVal = fc.showOpenDialog(null);
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					musicList.add(new Music(fc.getSelectedFile()));
@@ -628,6 +646,10 @@ public class Main extends JPanel {
 		
 	}
 	
+	/**
+	 * Plays the song selected in the music list.
+	 * @param index
+	 */
 	public void playSong(int index){
 		String musicPath = musicList.get(index).getFile().getPath();
 		if(musicList.get(index).isPlaying != true){
@@ -645,6 +667,9 @@ public class Main extends JPanel {
 		}
 	}
 	
+	/**
+	 * Pauses the selected song.
+	 */
 	public void pauseSong(){
 		log("<font style='color:red'>Music is stopped.</font>");
 		musicList.get(thePlayer.Playing).isPlaying = false;
@@ -652,12 +677,19 @@ public class Main extends JPanel {
 		thePlayer.close();
 	}
 	
+	/**
+	 * Clears out the whole music list.
+	 */
 	public void clearAll(){
 		startH.setText("");
         stopH.setText("");
         group.clearSelection();
 	}
 	
+	/**
+	 * This function logs a String s into the logArea at the bottom.
+	 * @param s
+	 */
 	public static void log(String s){
     	Calendar c = Calendar.getInstance();
     	SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
