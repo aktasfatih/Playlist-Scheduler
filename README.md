@@ -22,4 +22,7 @@ The file named 'Playlist-Scheduler.jar' is an executable jar, which means you ca
 - You have to click on the music after you add it in order to activate the menu.
 - To set a time more than one for a song, you have to add the file more than once then set the time.
  
+## Pictures from the software
+![alt text](https://github.com/aktasfatih/Playlist-Scheduler/blob/windowShot/Pictures/WindowShot_1.png?raw=true)
+
  Enjoy
