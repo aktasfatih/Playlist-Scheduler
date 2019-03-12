@@ -1,8 +1,8 @@
 ﻿# Playlist-Scheduler
 
-This is an application for playing mp3 files according to a schedule. By using this java-written application you can play the songs anytime you want. This application can be used in schools, houses or other social activities that may require a song in a specific time.
+<img src="https://github.com/aktasfatih/Playlist-Scheduler/blob/windowShot/Pictures/WindowShot_1.png?raw=true" width="300" alt="Screenshot of Playlist-Scheduler"/>
 
-This is one of my first projects. I hope you enjoy it. 
+This is an application for playing mp3 files according to a schedule. By using this java-written application you can play the songs anytime you want. This application can be used in schools, houses or other social activities that may require a song in a specific time. 
 
 ## How-to
 The file named 'Playlist-Scheduler.jar' is an executable jar, which means you can simply start the application by using this file.
@@ -21,5 +21,5 @@ The file named 'Playlist-Scheduler.jar' is an executable jar, which means you ca
 - Program only supports mp3 files for now. That may be changed if needed in the future.
 - You have to click on the music after you add it in order to activate the menu.
 - To set a time more than one for a song, you have to add the file more than once then set the time.
- 
+
  Enjoy
